@@ -1,0 +1,992 @@
+:root {
+    --primary-color: #2584ff;
+    --secondary-color: #00d9ff;
+    --accent-color: #ff3400;
+    --heading-color: #1b0760;
+    --body-color: #918ca4;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+/* Typography */
+
+::selection {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+html {
+    /* 62.5% of 16px = 10px */
+    font-size: 62.5%;
+}
+
+body {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    /* body font size is 24px ------> 2.4 x 10px = 24px */
+    font-size: 2.4rem;
+    /* 1.5 without any unit means 1.5 times the current font size */
+    line-height: 1.5;
+    color: var(--body-color);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+h1 {
+    /* 1 x font size of the root(html element) */
+    font-size: 7rem;
+    /* Moshify h1 heading font size is 70px */
+}
+
+h2 {
+    /* moshify h2 heading font size is 40px */
+    font-size: 4rem;
+}
+
+h3 {
+    /* for heading 3 font size will be 30px */
+    font-size: 3rem;
+    font-weight: 500;
+}
+
+
+/* Media Query for Laptop,Tablets, and bigger devices  (Typography)*/
+/* 1024px is a standard screen size that bootstrap and tailwind css use  */
+
+@media screen and (min-width: 1024px) {
+    body {
+        /* 1.8 x 10px = 18px */
+        font-size: 1.8rem;
+    }
+
+    h1 {
+        /* font size on screen is 80px */
+        font-size: 8rem;
+    }
+
+    h2 {
+        font-size: 4rem;
+    }
+
+    h3 {
+        /* 2.4 x 10 = 24 */
+        font-size: 2.4rem;
+    }
+
+}
+
+/* Links */
+
+.arrow-link {
+    color: var(--accent-color);
+    text-transform: uppercase;
+}
+
+.arrow-link {
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.arrow-link::after {
+    content: '-->';
+    margin-left: 5px;
+    transition: margin 0.15s;
+}
+
+.arrow-link:hover::after {
+    margin-left: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+    .arrow-link {
+        font-size: 1.5rem;
+    }
+}
+
+/* Badges */
+
+/* Object Oriented css second principal says that we should seperate structure from skins  */
+
+.badge {
+    border-radius: 20px;
+    font-weight: 600;
+    padding: .5rem 2rem;
+    white-space: nowrap;
+    font-size: 2rem;
+}
+
+/* Using BEM Convention we seperated block (.badge) with a modifier (primary) using "--"  */
+
+.badge--primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 2rem;
+}
+
+.badge--secondary {
+    color: #fff;
+    background-color: var(--secondary-color);
+}
+
+.badge--small {
+    font-size: 1.6rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .badge {
+        font-size: 1.5rem;
+    }
+
+    .badge--small {
+        font-size: 1.2rem;
+    }
+}
+
+/* Lists */
+
+.list {
+    list-style: none;
+    padding: 0;
+}
+
+.list--inline .list__items {
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.list--tick {
+    list-style-image: url(../Images/tick.svg);
+    padding-left: 3rem;
+    color: var(--heading-color);
+}
+
+.list--tick .list__items {
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .list--tick .list__items {
+        padding: 0;
+    }
+}
+
+/* Icons */
+
+.icon {
+    width: 40px;
+    height: 40px;
+}
+
+.icon--primary {
+    /* For SVG files we use fill property to color the icon */
+    fill: var(--primary-color);
+}
+
+.icon-container {
+    width: 64px;
+    height: 64px;
+    background-color: #f3f9fa;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+}
+
+.icon-container--accent {
+    background-color: var(--accent-color);
+}
+
+.icon--white {
+    fill: #fff;
+}
+
+.icon--small {
+    width: 30px;
+    height: 30px;
+}
+
+/* Button */
+
+.btn {
+    border-radius: 50px;
+    border: 0;
+    cursor: pointer;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 2rem 4vw;
+    text-transform: uppercase;
+    white-space: nowrap;
+    outline: none;
+}
+
+.btn .icon {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
+
+.btn--primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.btn--primary:hover {
+    background-color: #3a8ffd;
+}
+
+.btn--secondary {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+.btn--secondary:hover {
+    background-color: #00c8eb;
+}
+
+.btn--accent {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
+.btn--accent:hover {
+    background-color: #ec3000;
+}
+
+.btn--outline {
+    background-color: #fff;
+    color: var(--heading-color);
+    border: 2px solid var(--heading-color);
+    transition: background-color 0.3s;
+}
+
+.btn--outline:hover {
+    background-color: var(--heading-color);
+    color: #fff;
+}
+
+.btn-block {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+.btn--stretched {
+    padding-left: 6rem;
+    padding-right: 6rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .btn {
+        font-size: 1.5rem;
+    }
+}
+
+/* Input */
+
+.input {
+    padding: 1.5rem 3.5rem;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 30px;
+    color: var(--heading-color);
+    font-size: 2rem;
+}
+
+::placeholder {
+    color: #cdcbd7;
+}
+
+@media screen and (min-width: 1024px) {
+    .input {
+        font-size: 1.5rem;
+    }
+}
+
+/* Input Group */
+
+.input-group {
+    border: 1px solid #ccc;
+    border-radius: 30px;
+    display: flex;
+}
+
+.input-group .input {
+    border: none;
+    flex-grow: 1;
+    padding: 1.5rem 2rem;
+    width: 0;
+}
+
+.input-group .btn {
+    margin: 5px;
+}
+
+/* Cards */
+
+.card {
+    box-shadow: 0 0 20px 10px #f3f3f3;
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.card__header,
+.card__body {
+    padding: 2rem 3rem;
+}
+
+.card--primary .card__header {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.card--secondary .card__header {
+    background-color: var(--secondary-color);
+    color: #fff;
+}
+
+/* Plan */
+
+.plan {
+    transition: transform .2s ease-out;
+}
+
+.plan__name {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #fff;
+}
+
+.plan__price {
+    font-size: 5rem;
+}
+
+.plan__billing-cycle {
+    opacity: 80%;
+    font-size: 2rem;
+    font-weight: 300;
+    margin-right: 1rem;
+}
+
+.card--primary .badge--primary {
+    background-color: #126de4;
+}
+
+.card--secondary .badge--secondary {
+    background-color: #02cdf1;
+}
+
+.badge--small {
+    font-size: 1.6rem;
+    padding: .5rem 1.7rem;
+}
+
+.plan__description {
+    letter-spacing: 1px;
+    display: block;
+}
+
+.card__body {
+    padding-top: 1.5rem;
+}
+
+.plan .list__items {
+    margin-bottom: 2rem;
+}
+
+.plan--popular {
+    transform: scale(1.1);
+}
+
+.plan--popular .card__header {
+    position: relative;
+}
+
+.plan--popular .card__header::before {
+    content: url(../Images/popular.svg);
+    width: 40px;
+    /* svg is an inline element */
+    display: block;
+    position: absolute;
+    top: -6px;
+    right: 5%;
+}
+
+.plan:hover {
+    transform: scale(1.05);
+}
+
+.plan--popular:hover {
+    transform: scale(1.15);
+}
+
+@media screen and (min-width: 1024px) {
+    .plan__name {
+        font-size: 1.4rem;
+    }
+
+    .plan__price {
+        font-size: 5rem;
+    }
+
+    .plan__billing-cycle {
+        font-size: 1.6rem;
+    }
+
+    .plan__description {
+        font-size: 1.7rem;
+    }
+}
+
+/* Media Object */
+
+.media {
+    display: flex;
+    margin-bottom: 4rem;
+}
+
+.media__title {
+    margin: 0;
+}
+
+.media__image {
+    margin-top: 1rem;
+}
+
+.media__body {
+    margin: 0 2rem;
+}
+
+.media__description {
+    margin: 1rem 0;
+}
+
+/* Quote */
+
+.quote {
+    font-size: 3rem;
+    font-style: italic;
+    color: #5c5577;
+    line-height: 1.4;
+}
+
+.quote__text::before {
+    content: open-quote;
+}
+
+.quote__text::after {
+    content: close-quote;
+}
+
+.quote__author {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 2rem;
+    margin-bottom: 0;
+}
+
+.quote__company {
+    color: var(--heading-color);
+    opacity: .4;
+    font-style: normal;
+    font-size: 1.8rem;
+    margin: .8rem 0;
+}
+
+.quote__line {
+    position: relative;
+    bottom: 10px;
+}
+
+@media screen and (min-width: 1024px) {
+    .quote {
+        font-size: 2rem;
+    }
+
+    .quote__author {
+        font-size: 2.4rem;
+    }
+
+    .quote__company {
+        font-size: 1.6rem;
+    }
+}
+
+/* Grid */
+
+.grid {
+    display: grid;
+}
+
+/* 768px is a standard breakpoint for tablets */
+
+@media screen and (min-width: 768px) {
+    .grid--1x2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .grid--1x3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Testimonial */
+
+.testimonial {
+    padding: 4rem;
+}
+
+.testimonial__image {
+    width: 100%;
+}
+
+.testimonial__image-container {
+    position: relative;
+}
+
+.testimonial__image-container>.icon-container {
+    position: absolute;
+    top: 3rem;
+    right: -32px;
+}
+
+.testimonial-heading__line {
+    margin-top: 0;
+}
+
+.testimonial .quote {
+    margin: 2rem 0;
+    font-size: 90%;
+}
+
+@media screen and (min-width: 768px) {
+
+    .testimonial .quote,
+    .testimonial .quote__author {
+        font-size: 2.4rem;
+    }
+
+    .testimonial .quote {
+        margin-top: -1.5rem;
+        margin-left: 6rem;
+    }
+
+    .testimonial .quote__company {
+        font-size: 1.5rem;
+    }
+}
+
+/* Callout */
+
+.callout {
+    padding: 4rem;
+    border-radius: 5px;
+}
+
+.callout--primary {
+    background: var(--primary-color);
+}
+
+.callout__heading {
+    font-size: 3rem;
+    color: #fff;
+    margin-top: 0;
+}
+
+.callout__text {
+    color: #fff;
+}
+
+.callout .btn {
+    justify-self: center;
+    align-self: center;
+}
+
+.callout__content {
+    text-align: center;
+}
+
+.callout__anchor {
+    text-decoration: none;
+}
+
+.callout__signup {
+    transform: translateY(5rem);
+}
+
+@media screen and (min-width: 768px) {
+    .callout .grid--1x2 {
+        grid-template-columns: 1fr auto;
+    }
+
+    .callout__content {
+        text-align: left;
+    }
+
+    .callout .btn {
+        justify-self: start;
+        margin: 0 3rem;
+    }
+}
+
+/* Block */
+
+.block {
+    --padding-vertical: 6rem;
+    padding: var(--padding-vertical) 3rem;
+}
+
+.block__header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.block__heading {
+    margin-top: 0;
+}
+
+.block--dark {
+    background-color: #000;
+    color: #7b858b;
+}
+
+.block--dark .block__heading {
+    color: #fff;
+}
+
+.block--skewed-right {
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 95%);
+}
+
+.block--skewed-left {
+    padding-bottom: calc(var(--padding-vertical) + 4rem);
+    clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 0% 100%);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+/* Collapsible */
+
+.collapsible__heading {
+    margin-top: 0;
+    font-size: 3.5rem;
+}
+
+.collapsible__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.collapsible__chevron {
+    transform: rotate(-90deg);
+    transition: transform .3s;
+}
+
+.collapsible__content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all .2s;
+}
+
+.collapsible--expanded .collapsible__chevron {
+    transform: rotate(0);
+}
+
+.collapsible--expanded .collapsible__content {
+    max-height: 100vh;
+    opacity: 1;
+}
+
+/* Navigation Bar */
+
+.nav {
+    background-color: #000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 1.2rem;
+}
+
+.nav__list {
+    width: 100%;
+    margin: 0;
+}
+
+.nav__item {
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid #222;
+}
+
+.nav__item>a {
+    color: #d2d0db;
+    text-decoration: none;
+    transition: color .4s;
+}
+
+.nav__item>a:hover {
+    color: #fff;
+}
+
+.nav__toggler {
+    opacity: .5;
+    transition: box-shadow .2s;
+    cursor: pointer;
+}
+
+/* Here we are using double class selector to indicate that if an element has both classes then these properties will work syntax is without space write the classes */
+
+.nav.collapsible--expanded .nav__toggler {
+    opacity: 1;
+    box-shadow: 0 0 5px 3px #666;
+    border-radius: 5px;
+}
+
+.nav__brand {
+    transform: translateY(5px);
+}
+
+.nav__brand>img {
+    width: 150px;
+}
+
+@media screen and (min-width: 768px) {
+
+    .nav__toggler {
+        display: none;
+    }
+
+    .nav__list {
+        width: auto;
+        display: flex;
+        font-size: 1.7rem;
+        max-height: 100%;
+        opacity: 1;
+    }
+
+    .nav__item {
+        border: 0;
+    }
+}
+
+/* Hero Section */
+
+.hero__tagline {
+    font-size: 2rem;
+    color: #b9c3cf;
+    letter-spacing: 1px;
+    margin: 2rem 0 5rem;
+}
+
+.anchor__btn {
+    text-decoration: none;
+}
+
+.hero__image {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .hero {
+        padding-top: 0;
+    }
+
+    .hero__content {
+        text-align: left;
+        align-self: center;
+    }
+}
+
+/* Domain Block */
+
+.block-domain .input-group {
+    box-shadow: 0 0 30px 20px #e6ebee;
+    border: 0;
+    margin: 4rem auto;
+    max-width: 670px;
+}
+
+.block-domain__prices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 6rem);
+    color: var(--heading-color);
+    font-size: 2rem;
+    font-weight: 600;
+    justify-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .block-domain__prices {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+}
+
+/* Block Plans */
+
+.block-plan .grid {
+    gap: 8rem 4rem;
+}
+
+.block-plan .card {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Features Block */
+
+.feature__heading {
+    margin: 1rem 0;
+}
+
+.feature__image {
+    width: 100%;
+}
+
+.feature {
+    gap: 5rem 2rem;
+    margin: 12rem 0;
+}
+
+.feature:first-of-type {
+    margin-top: 6rem;
+}
+
+@media screen and (min-width: 768px) {
+    .feature:nth-of-type(even) .feature__content {
+        order: 2;
+    }
+}
+
+/* Showcase Block */
+
+.block-showcase__image>img {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .block-showcase__image>img {
+        width: auto;
+        max-width: 700px;
+    }
+
+    .block-showcase__image {
+        justify-self: end;
+    }
+
+    .showcase-block .grid {
+        grid-template-columns: 50% 50%;
+    }
+}
+
+/* Footer */
+
+.footer {
+    background-color: #232323;
+    padding-top: 10rem;
+}
+
+.footer__section {
+    padding: 2rem;
+    border-bottom: 1px solid #393939;
+}
+
+.footer__heading {
+    color: #fff;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    line-height: 1.6;
+}
+
+.footer__brand {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.footer__brand img {
+    width: 100%;
+    max-width: 230px;
+}
+
+.footer__copyright {
+    font-size: 2.1rem;
+    color: #fff;
+    opacity: .3;
+}
+
+.footer__section .list {
+    margin: 0;
+}
+
+
+.footer a {
+    color: #777;
+    transition: color .2s;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: #fff;
+}
+
+
+@media screen and (min-width: 768px) {
+    .footer {
+        font-size: 1.5rem;
+    }
+
+    .footer__sections {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
+    .footer .collapsible__chevron {
+        display: none;
+    }
+
+    .footer .collapsible__content {
+        opacity: 1;
+        max-height: 100%;
+    }
+
+    .footer__brand {
+        order: -1;
+        margin-top: 2rem;
+    }
+
+    .footer__copyright {
+        font-size: 1.5rem;
+    }
+
+    .footer__section {
+        border: 0;
+    }
+
+    .footer__heading {
+        font-size: 1.5rem;
+    }
+}
